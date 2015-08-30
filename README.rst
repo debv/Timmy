@@ -7,7 +7,7 @@ Timmy can help you create notebooks to organize all of your notes right in your 
 
 **Timmy in the Present**
 
-Albeit a little lackluster, Timmy is fully functional right now. Timmy automatically stores all notebooks and their notes in your Dropbox (assuming you have it in the default install path for Mac OS X and Linux) in the path ``/Users/<USERNAME>/Dropbox/Timmy/notes``.  It uses Vim as the default editor for editing/opening notes. Timmy is case sensitive especially with file names so make sure you ``-l`` to view your notes in case you forget how it was titled before trying to modify it (otherwise Timmy will just tell you it doesn't exist). Scroll to the bottom to read about what Timmy wants to be when it grows up.
+Albeit a little lackluster, Timmy is fully functional right now. Timmy automatically stores all notebooks and their notes in your Dropbox (assuming you have it in the default install path for Mac OS X and Linux) in the path ``/Users/<USERNAME>/Dropbox/Timmy/notes``.  It uses `Vim <https://github.com/vim/vim>`_ as the default editor for editing/opening notes. Timmy is case sensitive especially with file names so make sure you ``-l`` to view your notes in case you forget how it was titled before trying to modify it (otherwise Timmy will just tell you it doesn't exist). Scroll to the bottom to read about what Timmy wants to be when it grows up.
 
 **Working with Timmy**
 
@@ -106,3 +106,7 @@ Timmy is just a baby right now and I plan on improving on existing features and 
 - Search for keywords and return notes/notebooks that contain them
 - To-do feature for creating and tracking to-do lists
 - Optimize for large amounts of notebooks/notes
+
+**Find a bug? Want a feature added?**
+
+Let me know over at Timmys' `GitHub Issues Page <https://pypi.python.org/pypi/colorama>`_
