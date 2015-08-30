@@ -11,6 +11,10 @@ Albeit a little lackluster, Timmy is fully functional right now. Timmy automatic
 
 **Working with Timmy**
 
+Timmy uses the `Colorama <https://pypi.python.org/pypi/colorama>`_ Python package. To install `Colorama <https://pypi.python.org/pypi/colorama>`_  run::
+
+    pip install colorama
+
 To run Timmy:
 
 From your terminal make sure you are in the directory you put ``timmy.py`` in and type the following::
