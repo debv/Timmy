@@ -16,7 +16,7 @@ import subprocess
 from colorama import Fore, init
 
 #/--------Help Function--------/#
-def Help():
+def genHelp():
 	print("\nTimmy - A UNIX terminal personal assistant for note-taking")
 	print("\t-h \t Display this help Menu")
 	print("\t-q \t Quit Timmy\n")
@@ -28,7 +28,7 @@ def Help():
 #/------------------------------/#
 
 #/------Directory Function------/#
-def directories(user):
+def setDirectories(user):
 	#Check if Timmy/notes exists in Dropbox path, if it doesn't then create it
 	#add error message if trying to create dirs but they already exist
 	#at the time of installation (they shouldn't?)
@@ -167,7 +167,7 @@ def main():
 	user = getpass.getuser()
 	args = []
 
-	directories(user)
+	setDirectories(user)
 
 	while run == True:
 
@@ -176,7 +176,7 @@ def main():
 		notebookMode(run, user, args)
 
 		if arg == '-h':
-			Help()
+			genHelp()
 		elif arg == '-q':
 			run = False
 			sys.exit()
