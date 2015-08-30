@@ -18,7 +18,7 @@ from colorama import Fore, init
 #/--------Help Function--------/#
 def genHelp():
 	print("\nTimmy - A UNIX terminal personal assistant for note-taking")
-	print("\t-h \t Display this help Menu")
+	print("\t-h \t Display this help menu")
 	print("\t-q \t Quit Timmy\n")
 	print("\t-l \t List all notebooks | List notes in a notebook")
 	print("\t-o \t Open a notebook | Open a note")
