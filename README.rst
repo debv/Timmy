@@ -17,7 +17,7 @@ Timmy uses the `Colorama <https://pypi.python.org/pypi/colorama>`_ Python packag
 
 To run Timmy:
 
-From your terminal make sure you are in the directory you put ``timmy.py`` in and type the following::
+From your terminal, make sure you are in the directory you put ``timmy.py`` in and run::
 
     python timmy.py
 
