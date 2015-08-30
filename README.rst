@@ -109,4 +109,4 @@ Timmy is just a baby right now and I plan on improving on existing features and 
 
 **Find a bug? Want a feature added?**
 
-Let me know over at Timmys' `GitHub Issues Page <https://pypi.python.org/pypi/colorama>`_
+Let me know over at Timmys' `GitHub Issues Page <https://github.com/debv/Timmy/issues>`_
