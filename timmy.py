@@ -29,23 +29,21 @@ def Help():
 
 #/------Directory Function------/#
 def directories(user):
-	#Check if Timmy/notes exists, if it doesn't then create it
+	#Check if Timmy/notes exists in Dropbox path, if it doesn't then create it
 	#add error message if trying to create dirs but they already exist
 	#at the time of installation (they shouldn't?)
 	if not os.path.isdir('/Users/%s/Dropbox/Timmy/notes' % user):
-		#print("DOESN'T EXIST") #TEST
 		os.makedirs('/Users/%s/Dropbox/Timmy/notes' % user)
-		#print("DIRECTORY CREATED") #TEST
-		nDir = '/Users/%s/Dropbox/Timmy/notes' % user
-		#print(nDir)
 #/------------------------------/#
 
 #/------Notebook Functions------/#
+#List all notes inside current notebook
 def listNotes(user, notebook):
 	for notes in os.listdir('/Users/%s/Dropbox/Timmy/notes/%s' % (user, notebook)):
 		if not notes.startswith('.'):
 			print(notes)
 
+#Open a specific note (args[1]) inside current notebook (notebook)
 def openNote(user, args, notebook):
 	notes = os.listdir('/Users/%s/Dropbox/Timmy/notes/%s' % (user, notebook))
 	if args[1] in notes:
@@ -53,6 +51,7 @@ def openNote(user, args, notebook):
 	elif args[1] not in notes:
 		print("This note does not exist.")
 
+#Create a new note (args[1]) inside current notebook (notebook)
 def newNote(user, args, notebook):
 	for dirpath, dirname, files in os.walk('/Users/%s/Dropbox/Timmy/notes/%s' % (user, notebook)):
 		if not files:
@@ -64,6 +63,7 @@ def newNote(user, args, notebook):
 			elif args[1] in notes:
 				print("This note already exists.")
 
+#Delete a note (args[1]) inside current notebook (notebook)
 def deleteNote(user, args, notebook):
 	notes = os.listdir('/Users/%s/Dropbox/Timmy/notes/%s' % (user, notebook))
 	if args[1] in notes:
@@ -75,6 +75,9 @@ def deleteNote(user, args, notebook):
 	elif args[1] not in notes:
 		print("This note does not exist")
 
+#Call note-modifying functions based on command recieved (args[0])
+#This is called inside of openNotebook(user, args, notebook) since 
+#notes can only be modified while the notebook they are in is open
 def modifyNotes(user, args, notebook):
 	if args[0] == '-l':
 		listNotes(user, notebook)
@@ -85,39 +88,48 @@ def modifyNotes(user, args, notebook):
 	elif args[0] == '-d':
 		deleteNote(user, args, notebook)
 
+#List all notebooks
 def listNotebooks(user):
 	for notebooks in os.listdir('/Users/%s/Dropbox/Timmy/notes' % user):
 		if not notebooks.startswith('.'):
 			print(notebooks)
 
+#Open a specific notebook (notebook)
+#Timmy switches to "notebook mode" which is why
+#modifyNotes(user, args, notebook) gets called here
+#since notes can only be modified while the notebook
+#they are in is open
 def openNotebook(user, args, notebook):
 	while args[0] != '-c':
 		arg = raw_input("Timmy(Notebook %s): " % notebook)
 		args = arg.split()
 		modifyNotes(user, args, notebook)
 
-def newNotebook(user, args):
-	if not os.path.isdir('/Users/%s/Dropbox/Timmy/notes/%s' % (user, args[1])):
-		os.makedirs('/Users/%s/Dropbox/Timmy/notes/%s' % (user, args[1]))
+#Create a new notebook (notebook)
+def newNotebook(user, args, notebook):
+	if not os.path.isdir('/Users/%s/Dropbox/Timmy/notes/%s' % (user, notebook)):
+		os.makedirs('/Users/%s/Dropbox/Timmy/notes/%s' % (user, notebook))
 	else:
 		print("This notebook already exists")
 
-def deleteNotebook(user, args):
-	for dirpath, dirname, files in os.walk('/Users/%s/Dropbox/Timmy/notes/%s' % (user, args[1])):
+#Delete a notebook (notebook) and all of the notes inside of it
+def deleteNotebook(user, args, notebook):
+	for dirpath, dirname, files in os.walk('/Users/%s/Dropbox/Timmy/notes/%s' % (user, notebook)):
 		if files:
 			init(autoreset = True)
 			print(Fore.RED + "WARNING: This notebook contains notes.")
 			print(Fore.RED + "Deleting this notebook will also delete ALL notes inside.")
 			confirm = raw_input("Are you sure you want to delete this notebook? Y/n ")
 			if confirm == 'y':
-				shutil.rmtree('/Users/%s/Dropbox/Timmy/notes/%s' % (user, args[1]))
+				shutil.rmtree('/Users/%s/Dropbox/Timmy/notes/%s' % (user, notebook))
 
 		elif not files:
 			confirm = raw_input("Are you sure you want to delete this empty notebook? Y/n ")
 
 			if confirm == 'y':
-				shutil.rmtree('/Users/%s/Dropbox/Timmy/notes/%s' % (user, args[1]))
-
+				shutil.rmtree('/Users/%s/Dropbox/Timmy/notes/%s' % (user, notebook))
+				
+#Interact with all notebook and note related functions
 def notebookMode(run, user, args):
 	if args[0] == '-l':
 		listNotebooks(user)
@@ -133,13 +145,15 @@ def notebookMode(run, user, args):
 		if len(args) < 2:
 			print("ERROR: You must name a notebook or note")
 		elif len(args) == 2:
-			newNotebook(user, args)
+			notebook = args[1]
+			newNotebook(user, args, notebook)
 
 	elif args[0] == '-d':
 		if len(args) < 2:
 			print("ERROR: You must name a notebook or note to delete")
 		elif len(args) == 2:
-			deleteNotebook(user, args)
+			notebook = args[1]
+			deleteNotebook(user, args, notebook)
 
 	elif args[0] == '-q':
 		run = False
