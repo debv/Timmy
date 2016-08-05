@@ -3,11 +3,11 @@ Timmy
 
 Timmy is a UNIX terminal personal assistant for note-taking. 
 
-Timmy can help you create notebooks to organize all of your notes right in your Dropbox folder for easy access anywhere allowing you to edit, create and delete them as needed right from your terminal.
+Timmy can create "notebooks" to organize all of your notes right in your Dropbox folder for easy access anywhere allowing you to edit, create and delete them as needed right from your terminal.
 
 **Timmy in the Present**
 
-Albeit a little lackluster, Timmy is fully functional right now. Timmy automatically stores all notebooks and their notes in your Dropbox (assuming you have it in the default install path for Mac OS X and Linux) in the path ``/Users/<USERNAME>/Dropbox/Timmy/notes``.  It uses `Vim <https://github.com/vim/vim>`_ as the default editor for editing/opening notes. Timmy is case sensitive especially with file names so make sure you ``-l`` to view your notes in case you forget how it was titled before trying to modify it (otherwise Timmy will just tell you it doesn't exist). Scroll to the bottom to read about what Timmy wants to be when it grows up.
+Albeit a little lackluster, Timmy is functional right now. Timmy automatically stores all notebooks and their notes in your Dropbox (assuming you have it in the default install path for Mac OS X and Linux) in the path ``/Users/<USERNAME>/Dropbox/Timmy/notes``.  It uses `Vim <https://github.com/vim/vim>`_ as the default editor for editing/opening notes. Timmy is case sensitive especially with file names so make sure you ``-l`` to view your notes in case you forget how it was titled before trying to modify it (otherwise Timmy will just tell you it doesn't exist). Scroll to the bottom to read about what Timmy wants to be when it grows up.
 
 **Working with Timmy**
 
