@@ -1,7 +1,7 @@
 Timmy
 =================
 
-Timmy is a UNIX terminal personal assistant for note-taking. 
+Timmy is a command-line personal assistant for note-taking. 
 
 Timmy can create "notebooks" to organize all of your notes right in your Dropbox folder for easy access anywhere allowing you to edit, create and delete them as needed right from your terminal.
 
